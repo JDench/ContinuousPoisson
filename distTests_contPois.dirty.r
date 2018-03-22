@@ -26,10 +26,12 @@ aaa <- sapply(tmpSet,function(thisShape){
 		abline(v= tmpShape,col="red",lwd=2)
 		hist(tmpGamma,breaks=100, main=paste("Gamma ",tmpShape,sep=""))
 		abline(v= tmpShape,col="red",lwd=2)
-		tmpResults <-  sapply(list(tmpPois,tmpGamma),function(x){ c("Mean"=mean(x),"Min"=min(x),"Max"=max(x)),"Var"=var(x) })
+		tmpResults <-  sapply(list(tmpPois,tmpGamma),function(x){ 
+					c("Mean"=mean(x),"Min"=min(x),"Max"=max(x),"Var"=var(x)) 
+				})
 		
 		# This return a normalised comparison between the Poisson and gamma distriubtion draws.
-		return( apply(tmpResults,MARGIN=1,function(y){ (y[1]-y[2])/(y[2]) }) )
+		return( apply(tmpResults,MARGIN=1,function(y){ (y[1]-y[2])/(y[1]) }) )
 		})
 dev.off()
 
